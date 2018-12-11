@@ -9,18 +9,40 @@ let redDutyCycle = 0;
 let blueDutyCycle = 0;
 let greenDutyCycle = 0;
 
-setInterval(() => {
-    ledRed.pwmWrite(redDutyCycle);
-    redDutyCycle +=3;
-
-    if (redDutyCycle > 255) {
-        redDutyCycle =0;
-        while (blueDutyCycle <= 255) {
-            blueDutyCycle += 3
+for (let redIndex = 0; redIndex <= 255; redIndex+5) {
+    console.log(redIndex);
+    for (let blueIndex = 0; blueIndex <= 255; blueIndex+5) {
+        console.log(blueIndex);
+        for (let greenIndex = 0; greenIndex <= 255; greenIndex+5) {
+            console.log(greenIndex);            
         }
     }
-},50);
-console.log('Power up the red color.');
+}
+
+fade_on(redDutyCycle);
+
+
+function fade_on(dutyCycle) {
+    for (let index = 0; index < 255; index+=5) {
+        dutyCycle = index;
+        console.log(dutyCycle);
+    }
+}
+
+console.log(redDutyCycle);
+
+// setInterval(() => {
+//     ledRed.pwmWrite(redDutyCycle);
+//     redDutyCycle +=3;
+
+//     if (redDutyCycle > 255) {
+//         redDutyCycle =0;
+//         while (blueDutyCycle <= 255) {
+//             blueDutyCycle += 3
+//         }
+//     }
+// },50);
+
 //You can set a brightness value between 0 and 255 
 //where 0 is off and 255 is maximum brightness
 /*
