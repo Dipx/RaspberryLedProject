@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 var Gpio = require('pigpio').Gpio;
 
 var ledRed = new Gpio(27, {mode: Gpio.OUTPUT});
@@ -13,13 +15,13 @@ class Lights {
   setColor(color, dutyCycle) {
     switch (color) {
       case "RED":
-        //ledRed.pwmWrite(dutyCycle);
+        ledRed.pwmWrite(dutyCycle);
         break;
       case "BLUE":
-        //ledBlue.pwmWrite(dutyCycle);
+        ledBlue.pwmWrite(dutyCycle);
         break;
       case "GREEN":
-        //ledGreen.pwmWrite(dutyCycle);
+        ledGreen.pwmWrite(dutyCycle);
         break;
       default:
         break;
@@ -29,7 +31,7 @@ class Lights {
   fadeIn(color, dutyCycle) {
     return new Promise((resolve, reject) => {
       if (!this[`fadeIn${color}`]) {
-        this[`fadeIn${color}`] = resolve
+        this[`fadeIn${color}`] = resolve;
       }
       setTimeout(() => {
         console.log(`[FadeIn] ${color} set to ${dutyCycle}`);
@@ -47,7 +49,7 @@ class Lights {
   fadeOut(color, dutyCycle) {
     return new Promise((resolve, reject) => {
       if (!this[`fadeOut${color}`]) {
-        this[`fadeOut${color}`] = resolve
+        this[`fadeOut${color}`] = resolve;
       }
 
 
