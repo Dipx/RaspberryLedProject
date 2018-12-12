@@ -73,9 +73,20 @@ var lights = new Lights(50);
 (async () => {
 	await Promise.all([
   	lights.fadeIn('BLUE', 0),
-    lights.fadeIn('RED', 100)
+    lights.fadeIn('RED', 0),
+    lights.fadeIn('GREEN', 0)
    ])
-   await lights.fadeOut('RED', 150);
+   await Promise.all([
+    lights.fadeOut('RED', 255),
+    lights.fadeOut('BLUE', 255),
+    lights.fadeOut('GREEN', 255)
+   ]);
+   await lights.fadeIn("RED", 0)
+   await lights.fadeOut("RED", 255)
+   await lights.fadeIn("GREEN", 0)
+   await lights.fadeOut("GREEN", 255)
+   await lights.fadeIn("BLUE", 0)
+   await lights.fadeOut("BLUE", 255)
    console.log('DOne')
 })()
 
